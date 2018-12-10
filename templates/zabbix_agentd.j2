@@ -1,0 +1,18 @@
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#       Managed by saltstack          #
+# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+PidFile=/var/run/zabbix/zabbix_agentd.pid
+LogFile=/var/log/zabbix/zabbix_agentd.log
+DebugLevel=3
+EnableRemoteCommands=0
+Server=172.26.2.30
+ServerActive=172.26.2.30:10051
+Hostname=<strong>{{ ansible_fqdn }}<\strong>
+ListenPort=10050
+ListenIP=0.0.0.0
+RefreshActiveChecks=120
+BufferSend=5
+BufferSize=100
+MaxLinesPerSecond=100
+StartAgents=3
+Timeout=3
