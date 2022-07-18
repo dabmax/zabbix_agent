@@ -13,4 +13,5 @@
   import_tasks: service-agent.yml 
 
 - name: include tasks configure-zabbix
-  import_tasks: configure-zabbix.yml 
+  import_tasks: configure-zabbix.yml
+  
