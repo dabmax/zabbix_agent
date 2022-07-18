@@ -1,38 +1,48 @@
-Role Name
+Install Zabbix-Agent
 =========
 
-A brief description of the role goes here.
+This is playbook is responsible by install of the application Zabbix-Agent to O.S CentOS and Ubuntu at versions bellow:
+
+|OS|Version|
+|------|---------|
+|Ubuntu 18|Bionic|
+|Ubuntu 16|Trusty|
+|Ubuntu 14|Xenial|
+|CentOS|Version 7|
+|CentOS|Version 6|
+|CentOS|Version 5|
+
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This is playbook has necessity of access remote ssh to hosts destination and add the IPs or hostname of the hosts at file *inventory-hosts* witch there is at  project, the IPs separete for *enter*.
 
-Role Variables
+Ex inventory-hosts:
+```
+[hosts-zabbix-agent]
+10.0.0.123
+serverweb
+```
+
+Zabbix-Agent Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The project has variables definitions for S.O and versions at files in directory *vars*, but there is a variable default in file *main.yml* at diretory *default*.
 
-Dependencies
-------------
+    - vars
+      - CentOS-5.yml
+      - CentOS-6.yml
+      - Ubuntu-trusty.yml
+      - Ubuntu-xenial.yml
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+    - default
+      - main.yml
 
-Example Playbook
+
+Example of runnig Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+```
+$ ansible-playbook -i inventory-hosts play.yml
+```

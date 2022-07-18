@@ -1,6 +1,6 @@
 ---
-# handlers file for zabbix_agent
+# handlers file for zabbix-agent
 - name: restart zabbix-agent
   service:
-     name: zabbix-agent
-     state: restarted
+    name: zabbix-agent
+    state: restarted

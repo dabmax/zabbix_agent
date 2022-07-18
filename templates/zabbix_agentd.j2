@@ -1,18 +1,21 @@
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-#       Managed by saltstack          #
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+############ PARAMETERS #################
 PidFile=/var/run/zabbix/zabbix_agentd.pid
 LogFile=/var/log/zabbix/zabbix_agentd.log
+LogFileSize=100
 DebugLevel=3
 EnableRemoteCommands=0
-Server=172.26.2.30
-ServerActive=172.26.2.30:10051
-Hostname={{ ansible_fqdn }}
+Server=zabbix.ton.com.br
 ListenPort=10050
-ListenIP=0.0.0.0
-RefreshActiveChecks=120
-BufferSend=5
-BufferSize=100
-MaxLinesPerSecond=100
+ListenIP={{ ansible_default_ipv4.address }}
 StartAgents=3
-Timeout=3
+ServerActive=zabbix.ton.com.br
+Hostname=Zabbix server
+HostnameItem=system.run[echo `hostname`_`curl -s http://169.254.169.254/latest/meta-data/instance-id`]
+HostMetadata=prodv2-v2kpAh_^
+RefreshActiveChecks=120
+BufferSize=100
+AllowRoot=0
+User=zabbix
+Include=/etc/zabbix/zabbix_agentd.d/*.conf
+UnsafeUserParameters=0
+LoadModulePath=/usr/lib/modules

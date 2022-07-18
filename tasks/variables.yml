@@ -1,0 +1,11 @@
+- name: include variables cemtos
+  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+  when: (ansible_distribution == "CentOS") and
+        (ansible_distribution_major_version == "6") or
+        (ansible_distribution_major_version == "5")
+  
+- name: include variables ubuntu
+  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+  when: (ansible_distribution == "Ubuntu") and
+        (ansible_distribution_release == "trusty") or
+        (ansible_distribution_release == "xenial")

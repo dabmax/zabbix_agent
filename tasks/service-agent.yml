@@ -1,0 +1,7 @@
+- name: configuration service zabbix-agent
+  service:
+    name: zabbix-agent
+    state: present
+    enabled: yes
+  when: (installZabbixAgentYum is succeeded) or
+        (installZabbixAgentAPT is succeeded)
