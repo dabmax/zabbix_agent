@@ -1,0 +1,15 @@
+- name: install zabbix-agent yum
+  yum:
+    name: zabbix-agent
+    state: present
+  register: installZabbixAgentYum
+  when: (ansible_distribution == "CentOS") and
+        (configureRepoZabbixYum is succeeded)
+
+- name: install zabbix-agent with apt
+  apt:
+    name: zabbix-agent
+    state: present
+  register: installZabbixAgentAPT
+  when: (ansible_distribution == "Ubuntu") and
+        (configureRepoZabbixAPT is succeeded)

@@ -1,9 +1,17 @@
 ---
-- name: includeding install
-  import_tasks: install.yml
+# tasks file for zabbix-agent
+- name: include variables
+  import_tasks: variables.yml
 
-- name: includeding file configuration
-  import_tasks: conf.yml
+- name: include tasks config-repo
+  import_tasks: config-repo.yml
 
-- name: includeding service
-  import_tasks: service.yml
+- name: include tasks install-zabbix
+  import_tasks: install-zabbix.yml
+
+- name: include tasks configure-zabbix
+  import_tasks: service-agent.yml 
+
+- name: include tasks configure-zabbix
+  import_tasks: configure-zabbix.yml
+  

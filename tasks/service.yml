@@ -1,6 +1,0 @@
----
-- name: configuration of the service
-  service:
-    name: zabbix-agent
-    state: started
-    enabled: yes

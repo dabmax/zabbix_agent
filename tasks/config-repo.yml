@@ -1,0 +1,14 @@
+- name: configure repo to zabbix-agent with yum
+  yum_repository:
+    name: "zabbix-agent"
+    description: "Zabbix-Agent YUM repo"
+    baseurl: "{{ package_zabbix_agent_yum }}"
+  register: configureRepoZabbixYum
+  when: ansible_distribution == "CentOS"
+
+- name: configure repo to zabbix-agent with apt
+  apt:
+    deb: "{{ package_zabbix_agent_deb }}"
+    update_cache: yes
+  register: configureRepoZabbixAPT
+  when: ansible_distribution == "Ubuntu"

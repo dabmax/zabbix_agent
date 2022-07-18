@@ -1,0 +1,12 @@
+- name: delivery file configure
+  template:
+    src: zabbix_agentd.j2
+    dest: /etc/zabbix/zabbix_agentd.conf
+    owner: root
+    group: root
+    mode: "644"
+  register: copyConfigZabbixAgent
+  notify: 
+    - restart zabbix-agent
+  when: (installZabbixAgentYum is succeeded) or
+        (installZabbixAgentAPT is succeeded)
